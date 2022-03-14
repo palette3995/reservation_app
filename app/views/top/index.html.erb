@@ -1,0 +1,53 @@
+<!-- トップページのビュー -->
+<div class="top">
+  <div class="top-main">
+    <div class="container">
+        <div class="row col-lg-6">
+            <div class="form-fream">
+                <div class="form-area">
+                    <p class="form-area-title mb-4">Potepan Shareでまだ体験したことのない旅をしよう</p>
+                    <%= form_tag(search_path, method: :get) do %>
+                      <%= text_field_tag "search_area", "", class:"form-control mb-4", id: "search", placeholder:"東京" %>
+                      <%= button_tag "探す", class: "form-control btn btn-primary mb-4" %>
+                    <% end %>
+               </div>
+            </div>
+        </div>
+    </div>
+  </div>
+
+    <div class="container">
+            <div class="panel-area m-5">
+                <h1 class="section-title">おすすめのエリア</h1>
+                <div class="row">
+                    <div class="panel-item col-lg-3 col-6">
+                        <span>東京</span>
+                        <a href="http://localhost:3000/search?search_area=%E6%9D%B1%E4%BA%AC=">
+                          <%= image_tag asset_path("img_tokyo.jpeg"), size: "186x360" %>
+                        </a>
+                        <div class="shadow"></div>
+                    </div>
+                    <div class="panel-item col-lg-3 col-6">
+                        <span>大阪</span>
+                        <a href="http://localhost:3000/search?search_area=%E5%A4%A7%E9%98%AA">
+                          <%= image_tag asset_path("img_osaka.jpeg"), size: "186x360" %>
+                        </a>
+                        <div class="shadow"></div>
+                    </div>
+                    <div class="panel-item col-lg-3 col-6">
+                        <span>京都</span>
+                        <a href="http://localhost:3000/search?search_area=%E6%9C%AD%E5%B9%8C">
+                          <%= image_tag asset_path("img_kyoto.jpeg"), size: "186x360" %>
+                        </a>
+                        <div class="shadow"></div>
+                    </div>
+                    <div class="panel-item col-lg-3 col-6">
+                        <span>札幌</span>
+                        <a href="http://localhost:3000/search?search_area=%E6%9D%B1%E4%BA%AC=">
+                          <%= image_tag asset_path("img_sapporo.jpeg"), size: "186x360" %>
+                        </a>
+                    </div>
+                </div>
+           </div>
+    </div>
+</div>

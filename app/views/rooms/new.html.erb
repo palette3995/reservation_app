@@ -1,0 +1,38 @@
+<h1>ルーム情報登録</h1>
+ <%= render "shared/error", obj: @room %>
+ <%= form_with model: @room do |f| %>
+
+ <table class="table">
+   <%= f.hidden_field :user_id, value: current_user.id %>
+        <tr>
+          <th><%= f.label :room_name,"ルーム名" %></th>
+          <td><%= f.text_field :room_name %></td>
+        </tr>
+
+        <tr>
+          <th><%= f.label :room_introduction,"ルーム紹介" %></th>
+          <td><%= f.text_area :room_introduction %></td>
+        </tr>
+
+        <tr>
+          <th><%= f.label :price,"料金" %></th>
+          <td><%= f.text_field :price %></td>
+        </tr>
+
+        <tr>
+          <th><%= f.label :adress,"住所" %></th>
+          <td><%= f.text_area :adress %></td>
+        </tr>
+
+        <tr>
+          <th><%= f.label :image,"ルーム画像" %></th>
+          <td><%= f.file_field :image %></td>
+        </tr>
+</table>
+
+<div>
+        <ul>
+          <li><%= f.submit "登録する"%></li>
+        </ul>
+</div>
+<% end %>

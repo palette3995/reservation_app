@@ -1,0 +1,37 @@
+<h1>ルーム情報編集</h1>
+
+ <%= form_with model: @room do |f| %>
+ <%= f.hidden_field :user_id, value: current_user.id %>
+ <table class="table">
+        <tr>
+          <th><%= f.label :room_name,"ルーム名" %></th>
+          <td><%= f.text_field :room_name %></td>
+        </tr>
+
+        <tr>
+          <th><%= f.label :room_introduction,"ルーム紹介" %></th>
+          <td><%= f.text_area :room_introduction %></td>
+        </tr>
+
+        <tr>
+          <th><%= f.label :price,"料金" %></th>
+          <td><%= f.text_field :price %></td>
+        </tr>
+
+        <tr>
+          <th><%= f.label :adress,"住所" %></th>
+          <td><%= f.text_area :adress %></td>
+        </tr>
+
+        <tr>
+          <th><%= f.label :image,"ルーム画像" %></th>
+          <td><%= f.file_field :image %></td>
+        </tr>
+</table>
+
+<div>
+        <ul>
+          <li><%= f.submit "編集を完了する"%></li>
+        </ul>
+</div>
+<% end %>
