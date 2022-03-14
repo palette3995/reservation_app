@@ -1,0 +1,49 @@
+
+<div class="container room-show">
+  <div class="row">
+    <div class="col-md-8">
+       <%= image_tag @room.image.url, size: "630x357", class: 'room_show_image' %>
+       <div class="room-show-detail">
+         <div class="room-show-detail-icon">
+         <a href="/">
+          <%= image_tag asset_path("default_icon.png"), size: "65x65", class: 'host_icon' %>
+         </a>
+         </div>
+         <div class="room-show-profile">
+          <p class="room-show-profile-name"><%= @room.room_name%></p>
+          <p class="room-show-profile-address"><%= @room.adress%></p>
+         </div>
+        </div>
+       <p class="room-show-detile-content"><%= @room.room_introduction%></p>
+    </div>
+    <div class= "col-md-4" >
+    <p>￥<%= "#{@room.price}" %>/日</p>
+      <%= form_with model: @reservation, url: confirm_new_reservation_path, method: :post do |f| %>
+      <%= f.hidden_field :room_id, value: @room.id %>
+    <table class="table">
+       <tr>
+         <th><%= f.label :check_in,"開始日" %></th>
+         <td><%= f.date_field :check_in %></td>
+       </tr>
+
+       <tr>
+         <th><%= f.label :check_out,"終了日" %></th>
+         <td><%= f.date_field :check_out %></td>
+       </tr>
+
+       <tr>
+         <th><%= f.label :customer,"人数" %></th>
+         <td><%= f.text_field :customer %></td>
+       </tr>
+    </table>
+
+    <div>
+       <ul>
+         <li><%= f.submit "予約する"%></li>
+       </ul>
+    </div>
+      <% end %>
+      <%= render "shared/error", obj: @reservation %>
+    </div>
+  </div>
+</div>

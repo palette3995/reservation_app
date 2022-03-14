@@ -1,0 +1,19 @@
+<h1>検索結果：<%= "#{@rooms.count}" %>件 </h1>
+<div class="container-fiuld room">
+  <div class="row">
+   <% @rooms.each do |room|%>
+    <div class="col-sm-6 col-lg-4 col-xl-3">
+      <div class="room-frame-inner">
+          <div class="room-image-out">
+            <%= image_tag room.image.url, size: "255x180", class: "search_room_image" %>
+          </div>
+          <div class="room-profile">
+              <p class="room-profile-name"><%= link_to "#{room.room_name}", room_path(room) %></p>
+              <p class="room-profile-city"><%= room.adress %></p>
+              <p class="room-profile-price">￥<%= room.price %></p>
+          </div>
+      </div>
+    </div>
+   <% end %>
+  </div>
+</div>

@@ -1,0 +1,38 @@
+<div class="links">
+  <p class="account active"><%= link_to "アカウント", edit_user_registration_path %></p>
+  <p class="plofile no-active"><%= link_to "プロフィール", edit_user_path(current_user.id) %></p>
+</div>
+
+<h1>アカウント設定 </h1>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+ <table class="table">
+  <tr class="field">
+    <th><%= f.label :email %></th>
+    <td><%= f.email_field :email, autofocus: true, autocomplete: "email" %></td>
+  </tr>
+
+  <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+    <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+  <% end %>
+
+  <tr class="field">
+    <th><%= f.label :password %></th>
+    <td><%= f.password_field :password, autocomplete: "new-password" %></td>
+  </tr>
+
+  <tr class="field">
+    <th><%= f.label :password_confirmation %></th>
+    <td><%= f.password_field :password_confirmation, autocomplete: "new-password" %></td>
+  </tr>
+
+  <tr class="field">
+    <th><%= f.label :current_password %></th>
+    <td><%= f.password_field :current_password, autocomplete: "current-password" %></td>
+  </tr>
+ </table>
+  <div class="actions">
+    <%= f.submit "登録" %>
+  </div>
+<% end %>
